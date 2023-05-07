@@ -29,17 +29,29 @@ const Footer = (props) => {
     // console.log('window width = ', window.innerWidth);
 
     // set language icon based on the language state from props.language
-    var langIcon = '', booking, gallery;
+    var langIcon = '', langWord = '', booking, gallery;
     // console.log('language seen in header = ', props.language)
     if (props.language === 'en') {
+        langWord = 'English';
         langIcon = '/assets/images/icons/uk.svg';
         booking = 'Booking';
         gallery = 'Gallery';
-    } else {
+    } else if (props.language === 'jp') {
+        langWord = '日本語';
         langIcon = '/assets/images/icons/japan.svg';
         booking = 'ご予約';
         gallery = 'ガラりー';
-    }
+    } else if (props.language === 'ch1') {
+        langWord = '中文(简)';
+        langIcon = '/assets/images/icons/japan.svg';
+        booking = '订房';
+        gallery = '画廊';
+    } else if (props.language === 'ch2') {
+        langWord = '中文(繁)';
+        langIcon = '/assets/images/icons/japan.svg';
+        booking = '訂房';
+        gallery = '畫廊';
+    } else {}
     
     // const removeArrow = () => {
     //     document.getElementById('fcUp').style.opacity = 0.0;
@@ -55,10 +67,16 @@ const Footer = (props) => {
 
             {/* </div>  */}
             <div className='botthomMenuBar'>
-                <div className='bottomSmallScreen1'>
-                    <button type='button' onClick={props.changeLanguage} className='langButton'>
+                <div id='langWord' className='bottomSmallScreen1'>{langWord}
+                    <div className='langDropdownItemsFooter'>
+                        <div className='langDropdownItemFooter' onClick={()=>props.changeLanguage('en')}>{'English'}</div>
+                        <div className='langDropdownItemFooter' onClick={()=>props.changeLanguage('jp')}>{'日本語'}</div>
+                        <div className='langDropdownItemFooter' onClick={()=>props.changeLanguage('ch1')}>{'中文(简)'}</div>
+                        <div className='langDropdownItemFooter' onClick={()=>props.changeLanguage('ch2')}>{'中文(繁)'}</div>
+                    </div>
+                    {/* <button type='button' onClick={props.changeLanguage} className='langButton'>
                         <img src={langIcon} alt={'language icon: ' + props.language} id='langIcon' />
-                    </button> 
+                    </button>  */}
                 </div>
                 <a href='/gallery' className='bottomSmallScreen2'>{gallery}</a>
                 <a className='bookingBottom' href='/booking' >{booking}</a>

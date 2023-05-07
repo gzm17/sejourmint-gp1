@@ -23,14 +23,28 @@ function SelectionSummary(props) {
         totalPreTax = 'Total Pretax';
         goNext = 'Continue';
         discountName = 'Discount';
-    } else {
+    } else if (props.language === 'jp') {
         title = 'サマリー';
         taxTitle = '税金';
         total = '全額(税金こみ）';
         totalPreTax = '全額(税金抜き）';
         goNext = '次へ';
         discountName = '割引';
-    }
+    } else if (props.language === 'ch1') {
+        title = '总额';
+        taxTitle = '税金';
+        total = '总额（包税）';
+        totalPreTax = '总额（不包税）';
+        goNext = '下一步';
+        discountName = '折扣';
+    } else if (props.language === 'ch2') {
+        title = '總額';
+        taxTitle = '稅金';
+        total = '總額（包稅）';
+        totalPreTax = '總額(不包稅）';
+        goNext = '下一步';
+        discountName = '折扣';
+    } else {};
 
     let totalPriceNoTax =0; 
     const priceSummary = props.bookedRooms.map((booking, index) => {

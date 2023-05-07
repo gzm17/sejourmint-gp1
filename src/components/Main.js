@@ -44,7 +44,7 @@ function Main(props) {
         galleryHeading = 'Gallery';
         contactHeading = 'Contact Us';
         voices = 'Customer Voices'
-    } else {
+    } else if (props.language === 'jp') {
         welcomeHeading = 'ようこそ、ホテルセジュールミントへ';
         featureHeading = '便利性';
         roomsHeading = '部屋とアメニティー';
@@ -53,8 +53,27 @@ function Main(props) {
         galleryHeading = 'ギャラリー';
         contactHeading = '問い合わせ';
         voices = '顧客の声';
+    } else if (props.language === 'ch1') {
+        welcomeHeading = '欢迎到 旅家酒店';
+        featureHeading = '便利性';
+        roomsHeading = '客房及附带服务';
+        foodHeading = '食物和饮料';
+        actHeading = '活动';
+        galleryHeading = '画廊';
+        contactHeading = '询问';
+        voices = '客户反馈';
+    } else if (props.language === 'ch2') {
+        welcomeHeading = '歡迎到 旅家酒店';
+        featureHeading = '便利性';
+        roomsHeading = '客房及附帶服務';
+        foodHeading = '食物和飲料';
+        actHeading = '活動';
+        galleryHeading = '畫廊';
+        contactHeading = '詢問';
+        voices = '客戶反饋';
+    } else {}
 
-    }
+
 
     // Welcome Text - next to three photos 
     if (props.language === 'en') {
@@ -62,12 +81,22 @@ function Main(props) {
         convenience = convenienceText.text;
         foodndrinks = foodsMainText.text;
         activities = activitiesMainText.text;
-    } else {
+    } else if (props.language === 'jp') {
         welcome = welcomeText.textJ;
         convenience = convenienceText.textJ;
         foodndrinks = foodsMainText.textJ;
         activities = activitiesMainText.textJ;
-    }
+    } else if (props.language === 'ch1') {
+        welcome = welcomeText.textCh1;
+        convenience = convenienceText.textCh1;
+        foodndrinks = foodsMainText.textCh1;
+        activities = activitiesMainText.textCh1;
+    } else if (props.language === 'ch2') {
+        welcome = welcomeText.textCh2;
+        convenience = convenienceText.textCh2;
+        foodndrinks = foodsMainText.textCh2;
+        activities = activitiesMainText.textCh2;
+    } else {};
 
     /* This block code processes the features file and compile jsx for rendering (return below) */
     const featureImages = features.map(image => {
@@ -84,13 +113,17 @@ function Main(props) {
 
     /* swiper add: This block code processes the Room Types Section (roomtypes.js), prepares PhotoFrameMany components */
     const roomsContent = roomType.map(room => {
+        var caption = '';
+        if (props.language === 'en' ) { caption = room.caption; }
+        else if (props.language === 'jp' ) { caption = room.captionJ; }
+        else if (props.language === 'ch1' ) { caption = room.captionCh1; }
+        else if (props.language === 'ch2' ) { caption = room.captionCh2; }
+        else {}
+
         return (
             <div key={room.id} className='col-6 col-md-full col-sm-full'>
-                { props.language === 'en' ?
                 <div className='photoFrameManyContainer1'>
-                    <PhotoFrameMany images={room.images} caption={room.caption} contentType={room.name} fontIsBlack='false'/></div> :
-                <div className='photoFrameManyContainer1'>
-                    <PhotoFrameMany images={room.images} caption={room.captionJ} contentType={room.nameJ} fontIsBlack='false' /></div> }
+                    <PhotoFrameMany images={room.images} caption={caption} contentType={room.name} fontIsBlack='false'/></div> 
             </div>
         )
     })
@@ -215,11 +248,36 @@ function Main(props) {
             <div style={{backgroundColor: 'rgb(255, 242, 230)'}}>
                 <SectionTitle ids='voices' title={voices} />
                 <div className='voicesGroup'>
-                        <div className='voices'>{voicesText.v1}</div>
-                        <div className='voices'>{voicesText.v2}</div>
-                        <div className='voices'>{voicesText.v3}</div>
-                        <div className='voices'>{voicesText.v4}</div>
-                        <div className='voices'>{voicesText.v5}</div>
+                        <div className='voiceBox'>
+                            <div className='voice'>{voicesText.v1}</div>
+                            <div className='voiceName'>{voicesText.v1name}</div>
+                        </div>
+
+                        <div className='voiceBox'>
+                            <div className='voice'>{voicesText.v1}</div>
+                            <div className='voiceName'>{voicesText.v1name}</div>
+                        </div>
+
+                        <div className='voiceBox'>
+                            <div className='voice'>{voicesText.v2}</div>
+                            <div className='voiceName'>{voicesText.v2name}</div>
+                        </div>
+
+                        <div className='voiceBox'>
+                            <div className='voice'>{voicesText.v3}</div>
+                            <div className='voiceName'>{voicesText.v3name}</div>
+                        </div>
+
+                        <div className='voiceBox'>
+                        <div className='voice'>{voicesText.v4}</div>
+                        <div className='voiceName'>{voicesText.v4name}</div>
+                        </div>
+
+                        <div className='voiceBox'>
+                            <div className='voice'>{voicesText.v5}</div>
+                            <div className='voiceName'>{voicesText.v5name}</div>
+                        </div>
+
                 </div>
                 <div className='sectionEnd'>{}</div>
             </div>

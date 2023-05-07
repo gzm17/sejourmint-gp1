@@ -19,14 +19,28 @@ const ContactUs = (props) => {
         email = 'Email:';
         socMedia = 'Social Media:';
         forBooking = 'For Booking:';
-    } else {
+    } else if (props.language === 'jp') {
         addressTitle = '住所:';
         address = '日本国長野県白馬村神城　22201-68';
         phone = '電話:';
         email = 'メール:';
         socMedia = 'ソーシャル・メデア:';
         forBooking = '予約:';
-    }
+    } else if (props.language === 'ch1') {
+        addressTitle = '地址:';
+        address = '日本国長野県白馬村神城　22201-68';
+        phone = '电话:';
+        email = '邮箱:';
+        socMedia = '社交媒体:';
+        forBooking = '订房:';
+    } else if (props.language === 'ch2') {
+        addressTitle = '地址:';
+        address = '日本国長野県白馬村神城　22201-68';
+        phone = '電話:';
+        email = '郵箱:';
+        socMedia = '社交媒體:';
+        forBooking = '訂房:';
+    } else {}
 
     return (
         <div id={id} className='contactUsBox' >
@@ -51,7 +65,7 @@ const ContactUs = (props) => {
                         </tr>
                         <tr>
                             <td className='tableCol1'>{email}</td>
-                            <td className='tableCol2'>info@hakubamint.jp</td>
+                            <td className='tableCol2'>info@sejourmint.com</td>
                         </tr>
                         <tr>
                             <td className='tableCol1'>{socMedia}</td>
@@ -88,7 +102,7 @@ const ContactUs = (props) => {
                         </tr>
                         <tr>
                             <td className='tableCol1'></td>
-                            <td className='tableCol2'>booking@hakubamint.jp</td>
+                            <td className='tableCol2'>info@sejourmint.com</td>
                         </tr>
                     </tbody>
                     <tfoot>

@@ -18,7 +18,7 @@ function GalleryHeader(props) {
         summer = 'Summer';
         fall = 'Fall';
         videos = 'Videos';
-    } else {
+    } else if (props.language === 'jp') {
         gallery = 'ギャラリー';
         hotel = 'ホテル';
         rooms = '部屋';
@@ -27,7 +27,25 @@ function GalleryHeader(props) {
         summer = '夏';
         fall = '秋';
         videos = '映像';
-    }
+    } else if (props.language === 'ch1') {
+        gallery = '画廊';
+        hotel = '旅馆';
+        rooms = '客房';
+        winter = '冬';
+        spring = '春';
+        summer = '夏';
+        fall = '秋';
+        videos = '视频';
+    } else if (props.language === 'ch2') {
+        gallery = '畫廊';
+        hotel = '旅館';
+        rooms = '客房';
+        winter = '冬';
+        spring = '春';
+        summer = '夏';
+        fall = '秋';
+        videos = '視頻';
+    } else {};
 
 
     const [menuItem, setMenuItem] = useState('hotel');

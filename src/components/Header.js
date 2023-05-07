@@ -13,20 +13,27 @@ const Header = (props) => {
         if (window.scrollY >= 45 ) {
             setTopbarIsOpague(true);
             document.getElementById('hotelName').style.color = '#00709e';
+            document.getElementById('langWord').style.color = '#00709e';
         } else {
             setTopbarIsOpague(false);
             document.getElementById('hotelName').style.color = 'rgb(242, 180, 34)';
+            document.getElementById('langWord').style.color = 'rgb(242, 180, 34)';
         }
     }
 
     window.addEventListener('scroll', changeTopbarColor);
     // END
 
+    const changeLang = (lang) => {
+        props.changeLanguage(lang);
+    }
+
     // set language icon and menu items based on the language state from props.language
-    var langIcon = '', featureHeading = '', roomsHeading = '', foodHeading = '', actHeading = '', 
+    var langIcon = '', langWord = '', featureHeading = '', roomsHeading = '', foodHeading = '', actHeading = '', 
         galleryHeading = '', contactHeading = '', bookHeading = '', galleryHeading = '';
     // console.log('language seen in header = ', props.language)
     if (props.language === 'en') {
+        langWord = 'English';
         langIcon = '/assets/images/icons/uk.svg';
         featureHeading = 'Convenience';
         roomsHeading = 'Rooms and Amenities';
@@ -35,7 +42,8 @@ const Header = (props) => {
         galleryHeading = 'Gallery';
         contactHeading = 'Contact Us';
         bookHeading = 'BOOK NOW';
-    } else {
+    } else if (props.language === 'jp') {
+        langWord = '日本語';
         langIcon = '/assets/images/icons/japan.svg';
         featureHeading = '便利性';
         roomsHeading = '部屋とアメニティー';
@@ -44,6 +52,26 @@ const Header = (props) => {
         galleryHeading = 'ギャラリー';
         contactHeading = '問い合わせ';
         bookHeading = '予約';
+    } else if (props.language === 'ch1') {
+        langWord = '中文(简)';
+        langIcon = '/assets/images/icons/japan.svg';
+        featureHeading = '便利性';
+        roomsHeading = '客房及附带服务';
+        foodHeading = '食物和饮料';
+        actHeading = '标准服务';
+        galleryHeading = '画廊';
+        contactHeading = '询问';
+        bookHeading = '订房';
+    } else {
+        langWord = '中文(繁)';
+        langIcon = '/assets/images/icons/japan.svg';
+        featureHeading = '便利性';
+        roomsHeading = '客房及附帶服務';
+        foodHeading = '食物和飲料';
+        actHeading = '標準服務';
+        galleryHeading = '畫廊';
+        contactHeading = '詢問';
+        bookHeading = '訂房';
     }
     
 
@@ -76,9 +104,17 @@ const Header = (props) => {
                 <h2 id='hotelName'>Hotel Sejour Mint</h2>
             </div>
             <div className='col-3 headerRight'>             {/* right 25% container for booking button for big screen */}
-                <button type='button' onClick={props.changeLanguage} className='langButton'>
+                <div id='langWord' className='langDropdownBox'>{langWord}
+                    <div className='langDropdownItems'>
+                        <div className='langDropdownItem' onClick={()=>props.changeLanguage('en')}>{'English'}</div>
+                        <div className='langDropdownItem' onClick={()=>props.changeLanguage('jp')}>{'日本語'}</div>
+                        <div className='langDropdownItem' onClick={()=>props.changeLanguage('ch1')}>{'中文(简)'}</div>
+                        <div className='langDropdownItem' onClick={()=>props.changeLanguage('ch2')}>{'中文(繁)'}</div>
+                    </div>
+                </div>
+                {/* <button type='button' onClick={props.changeLanguage} className='langButton'>
                     <img src={langIcon} alt={'language icon: ' + props.language} id='langIcon' />
-                </button> 
+                </button>  */}
                 <Link to='booking' className='booking'>{bookHeading}</Link>
             </div> 
         </div>

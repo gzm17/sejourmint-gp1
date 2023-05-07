@@ -24,7 +24,7 @@ export function RoomTypesAvailable(props) {
         rates = 'Rates';
         summary = 'Summary';
         details = 'Details';
-    } else {
+    } else if (props.language === 'jp') {
         title = '部屋タイプを選択する';
         maxGuests = '定員';
         taxExcluded = '10％消費税を抜いて';
@@ -34,7 +34,27 @@ export function RoomTypesAvailable(props) {
         rates = '料金';
         summary = 'サマリー';
         details = '詳細';
-    }
+    } else if (props.language === 'ch1') {
+        title = '选择客房种类';
+        maxGuests = '定员';
+        taxExcluded = '不包10%消费税';
+        select = '选择';
+        dates = '日期';
+        roomTypes = '客房种类';
+        rates = '房价';
+        summary = '总额';
+        details = '详细';
+    } else if (props.language === 'ch2') {
+        title = '選擇客房種類';
+        maxGuests = '定員';
+        taxExcluded = '不包10%的消費稅';
+        select = '選擇';
+        dates = '日期';
+        roomTypes = '客房種類';
+        rates = '房價';
+        summary = '總額';
+        details = '詳細';
+    } else {};
 
     const price = 16000; // later replace by query result    
     // console.log('grand p values - ', props.booking.adults);

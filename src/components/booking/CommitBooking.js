@@ -248,7 +248,7 @@ function CommitBooking(props) {
         totalCostWTax = 'Total Cost Including Tax';
         commit = 'Confirm Booking Info and Pay';
         discountName = 'Discount';
-    } else {
+    } else if (props.language === 'jp') {
         title = 'お客様情報と支払い情報';
         bookerSelf = '自分で予約している';
         bookerOther = '他人のために予約している';
@@ -273,7 +273,57 @@ function CommitBooking(props) {
         totalCostWTax = '総額（税込）';
         commit = '予約情報を確認して、支払う';
         discountName = '割引';
-    }
+    } else if (props.language === 'ch1') {
+        title = '客户及支付信息';
+        bookerSelf = '为自己订房';
+        bookerOther = '为他人订房';
+        bookerDetail = '订房人信息';
+        guestDetail = '住客信息';
+        payment = '支付方式';
+        checkBox1Text = 'CheckBox1 text';
+        firstName = '名字';
+        lastName = '姓 *';
+        email = '邮箱 *';
+        emailText = '确认邮件将送到此邮箱';
+        phoneNum = '电话号码 *';
+        nationality = '国籍';
+        instruction = '其它及询问';
+        paymentLogoTxt = 'Secured by ZENTOMI LLC ';
+        cardNum = '信用卡号 *';
+        expDate = '有效期限 MM / YY） *';
+        cvv = 'CVV安全码 *';
+        nameOnCard = '信用卡姓名 *';
+        totalCost = '总额';
+        totalTax = '税金';
+        totalCostWTax = '总额（包税）';
+        commit = '确认订房信息/支付';
+        discountName = '折扣';
+    } else if (props.language === 'ch2') {
+        title = '客戶及支付信息';
+        bookerSelf = '為自己訂房';
+        bookerOther = '為他人訂房';
+        bookerDetail = '訂房人信息';
+        guestDetail = '住客信息';
+        payment = '支付方式';
+        checkBox1Text = 'CheckBox1 text';
+        firstName = '名字 ';
+        lastName = '姓 *';
+        email = '郵箱 *';
+        emailText = '確認郵件將送到此郵箱';
+        phoneNum = '電話號碼 *';
+        nationality = '國籍';
+        instruction = '其他及詢問';
+        paymentLogoTxt = 'Secured by ZENTOMI LLC ';
+        cardNum = '信用卡號 *';
+        expDate = '有效期限（MM / YY） *';
+        cvv = 'CVV安全碼 *';
+        nameOnCard = '信用卡姓名 *';
+        totalCost = '總額';
+        totalTax = '稅金';
+        totalCostWTax = '総額（包稅）';
+        commit = '確認訂房信息/支付';
+        discountName = '折扣';
+    } else {};
 
     function handleBookerClick(booker){
         const selfBox = document.getElementsByClassName('bookingForSelf')[0];

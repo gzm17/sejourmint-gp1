@@ -21,7 +21,7 @@ function SelectRoomType(props) {
         rates = 'Rates';
         summary = 'Summary';
         details = 'Details';
-    } else {
+    } else if (props.language === 'jp') {
         title = '部屋タイプを選択する';
         unavail = '満室の部屋タイプ';
         dates = '日付';
@@ -29,7 +29,23 @@ function SelectRoomType(props) {
         rates = '料金';
         summary = 'サマリー';
         details = '詳細';
-    }
+    } else if (props.language === 'ch1') {
+        title = '选择客房类型';
+        unavail = '已满的客房类型';
+        dates = '日期';
+        roomTypes = '客房类型';
+        rates = '房价';
+        summary = '汇总';
+        details = '详细';
+    } else if (props.language === 'ch2') {
+        title = '選擇客房類型';
+        unavail = '已滿的客房類型';
+        dates = '日期';
+        roomTypes = '客房類型';
+        rates = '房價';
+        summary = '匯總';
+        details = '詳細';
+    } else {};
 
 // Get Available Rooms from Querying database
 useEffect(() => {

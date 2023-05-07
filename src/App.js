@@ -94,7 +94,7 @@ export default function App() {
   // This function updates the booking after user selects. Called from App's child components
   const updateBooking = (booking) => {
     setBooking(booking);
-    console.log('VVVVV booking = ', booking);
+    // console.log('VVVVV booking = ', booking);
     // console.log('booking updated in App', booking.checkin, booking.checkout, booking.adults, booking.kids, booking.currentStep, booking.type, booking.rate, booking.instruction);
   }
 
@@ -109,7 +109,7 @@ export default function App() {
   // refreshBBookedRooms recopy the entire array of bookings. This is needed when partial contents
   // are updated during queries with the databbase, such as guestIds 
   const refreshBookedRoom = (rooms) => {
-    console.log('COMMMIT in APP refreshBookedRooms = ', rooms);
+    // console.log('COMMMIT in APP refreshBookedRooms = ', rooms);
     setBookedRooms(rooms);
   }
 
@@ -125,23 +125,33 @@ export default function App() {
 
   // define language with EN as default - this can be changed to season based: snow season - EN, rest - JP
   const [language, setLanguage] = useState('en');
-  const changeLanguage = () => {
-    if (language === 'en' ) { 
-      setLanguage('jp'); 
+  // console.log('XXX OUTSIDE language = ', language);
+  const changeLanguage = (lang) => {
+    // console.log('XXX INSIDE language and lang = ', language, lang);
+    if(lang !== language ) {
+      if (lang === 'en' ) { 
+        setLanguage('en'); 
+      } else if (lang === 'jp' ) { 
+        setLanguage('jp');
+      } else if (lang === 'ch1' ) { 
+        setLanguage('ch1');
+      } else { 
+        setLanguage('ch2');
+      } 
     }
-    else if (language === 'jp' ) { 
-      setLanguage('en');
-    };
   }
 
   // Update contactHeading - Note: embedding this within chnageLanguage does not work due to async update
   var contactHeading = '';
   if (language === 'en' ) { 
     contactHeading = 'Contact Us';
-  }
-  else if (language === 'jp' ) { 
+  } else if (language === 'jp' ) { 
     contactHeading = '問合せ';
-  };
+  } else if (language === 'ch1' ) { 
+    contactHeading = '与我们联系';
+  } else if (language === 'ch2' ) { 
+    contactHeading = '與我們聯繫';
+  } else {};
 
   const videosMsg = <p>Videos are coming soon.</p>;
 

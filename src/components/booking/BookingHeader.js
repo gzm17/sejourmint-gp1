@@ -23,13 +23,25 @@ function BookingHeader(props) {
         rates = 'Rates';
         summary = 'Summary';
         details = 'Details';
-    } else {
+    } else if (props.language === 'jp') {
         dates = '日付';
         roomTypes = '部屋タイプ';
         rates = '料金';
         summary = 'サマリー';
         details = '詳細';
-    }
+    } else if (props.language === 'ch1') {
+        dates = '日期';
+        roomTypes = '客房类型';
+        rates = '房价';
+        summary = '总额';
+        details = '详细';
+    } else if (props.language === 'ch2') {
+        dates = '日期';
+        roomTypes = '客房類型';
+        rates = '房價';
+        summary = '總額';
+        details = '詳細';
+    } else {};
     
     // Put symbols in vars so that they are changable 
     // console.log('After STEPS IN Header = ', props.steps.currentStep, props.steps.viewStep);

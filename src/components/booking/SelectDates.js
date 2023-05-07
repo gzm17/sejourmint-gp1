@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { IoArrowForward, IoAdd, IoRemove, IoAddCircleOutline, IoBarChartOutline, IoCheckmark, IoChevronDownOutline, IoChevronUpOutline} from "react-icons/io5";
 import Calendar from 'react-calendar';
@@ -54,20 +54,41 @@ function SelectDates(props) {
 
 
     // Prepare bilingual titles
-    var dates, roomTypes, rates, summary, details;
+    var dates, roomTypes, rates, summary, details, alertMsg;
     if (props.language === 'en') {
         dates = 'Dates';
         roomTypes = 'Room Types';
         rates = 'Rates';
         summary = 'Summary';
         details = 'Details';
-    } else {
+        alertMsg = 'This booking section is NOT operatoinal yet, pending on system integration. When ready, you will not see this message. Meanwhile, to book, please email us at info@sejourmint.com or call us. See Contact Us section. Thanks.'
+    } else if (props.language === 'jp') {
         dates = '日付';
         roomTypes = '部屋タイプ';
         rates = '料金';
         summary = 'サマリー';
         details = '詳細';
-    }
+        alertMsg = 'この予約セクションは、システムの統合を待っているため、まだ稼働していません。準備ができたら、このメッセージは表示されなくなります。その間、ご予約はinfo@sejourmint.comまでメールいただくか、お電話いただくか、Contact Usセクションをご覧ください。ありがとうございます。';
+    } else if (props.language === 'ch1') {
+        dates = '日期';
+        roomTypes = '客房种类';
+        rates = '房价';
+        summary = '总额';
+        details = '详细';
+        alertMsg = '这个订房部分目前还没有运行，正在等待系统集成。当准备就绪后，这个警告将不再出现。在此期间，请发送电子邮件到info@sejourmint.com或给我们打电话来预订。请参见“联系我们”部分。谢谢。';
+    } else if (props.language === 'ch2') {
+        dates = '日期';
+        roomTypes = '客房種類';
+        rates = '房價';
+        summary = '總額';
+        details = '詳細';
+        alertMsg = '这个訂房部分目前還沒有運行，正在等待系統集成。當準備就緒後，這個警告將不再出現。在此期間，請發送電子郵件到info@sejourmint.com或給我們打電話來預訂。請參見“聯繫我們”部分。謝謝。';
+    } else {};
+
+    // Below is temporary to alert users that the booking section is not operational yet.
+    useEffect(()=> {
+        alert(alertMsg);
+    }, [])
     // numer of guests
     function updateNumGuests(choiceMade) {
         // console.log('numGuests clicked - 2 ', numGuests.adults, choiceMade);
