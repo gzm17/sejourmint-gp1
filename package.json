@@ -21,7 +21,8 @@
     "react-social-icons": "^5.15.0",
     "reactstrap": "^9.1.5",
     "swiper": "^8.4.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "gh-pages": "^5.0.0"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -48,8 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
   }
 }
